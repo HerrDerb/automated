@@ -37,7 +37,7 @@ public class AutomatedMain extends ApplicationAdapter {
     public void create() {
         world = new World(new Vector2(0, 0), true);
         rayHandler = new RayHandler(world);
-        rayHandler.setAmbientLight(0.1f, 0.1f, 0.1f, 0.4f);
+        rayHandler.setAmbientLight(0.1f, 0.1f, 0.1f, 0.8f);
         rayHandler.setCulling(false);
         stage = new Box2dStage(world, rayHandler);
         stage.setViewport(new ScreenViewport());

@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
-import ch.herrderb.MoveUntil;
 import ch.herrderb.abilities.Angled;
 import ch.herrderb.actors.BasicShot;
 import lombok.RequiredArgsConstructor;

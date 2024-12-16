@@ -1,16 +1,18 @@
-package ch.herrderb;
+package ch.herrderb.actions;
 
 import java.time.Duration;
 import java.time.Instant;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class ShakeAction extends Action {
+    private final int intensity;
+    private final Duration duration ;
     private int initialX;
     private int initialY;
-    private final int intensity = 10;
-
-    private Duration duration = Duration.ofMillis(500);
     private Instant startTime = Instant.MIN;
 
     @Override

@@ -1,4 +1,4 @@
-package ch.herrderb;
+package ch.herrderb.actions;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
 

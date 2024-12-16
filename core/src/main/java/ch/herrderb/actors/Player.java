@@ -1,6 +1,8 @@
 package ch.herrderb.actors;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -9,19 +11,26 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import ch.herrderb.actors.resource.ResourceType;
 import ch.herrderb.items.BasicItem;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Player extends Actor {
+    @Getter
+    private static Player instance;
+    @Getter
+    private int autoCollectRange = 40;
     private static final Texture texture;
     private BasicItem itemLeft;
     private BasicItem itemRight;
     private LinkedList<BasicItem> items = new LinkedList<>();
+    private Map<ResourceType, Integer> resources = new HashMap<>();
 
     static {
         Pixmap pixmap = new Pixmap(10, 10, Pixmap.Format.RGBA8888);
-        pixmap.setColor(Color.GREEN);
+        pixmap.setColor(Color.BLUE);
         pixmap.fill();
         texture = new Texture(pixmap);
         pixmap.dispose();
@@ -29,6 +38,7 @@ public class Player extends Actor {
 
     public Player() {
         setBounds(0, 0, 10, 10);
+        instance = this;
     }
 
     @Override
@@ -85,5 +95,10 @@ public class Player extends Actor {
                 Gdx.app.log("Player", "Activating itemslot " + itemSlot);
             }
         }
+    }
+
+    public void addResource(ResourceType wood, int amount) {
+        resources.put(wood, resources.getOrDefault(wood, 0) + amount);
+        Gdx.app.log("Player", "Added " + amount + " " + wood + " to inventory. New Total: " + resources.get(wood));
     }
 }

@@ -11,15 +11,15 @@ import com.badlogic.gdx.math.Vector2;
 import ch.herrderb.actors.Tree;
 
 public class Axe extends BasicItem {
-
-    private final Circle actionCircle = new Circle(0, 0, 20);
+    private static final int CHOP_RADIUS = 30;
+    private final Circle actionCircle = new Circle(0, 0, CHOP_RADIUS);
     private boolean displayChopRadius = false;
     private static Texture texture;
 
     static {
-        Pixmap pixmap = new Pixmap(40, 40, Pixmap.Format.RGBA8888);
+        Pixmap pixmap = new Pixmap(CHOP_RADIUS * 2, CHOP_RADIUS * 2, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.SALMON);
-        pixmap.fillCircle(20, 20, 40);
+        pixmap.fillCircle(CHOP_RADIUS, CHOP_RADIUS, CHOP_RADIUS);
         texture = new Texture(pixmap);
         pixmap.dispose();
     }
